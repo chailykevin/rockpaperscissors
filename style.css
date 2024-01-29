@@ -1,0 +1,109 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #001f3f;
+  color: #fff;
+}
+
+h1 {
+  padding: 10px;
+}
+
+.scoreboard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  border-left: 1px solid #fff;
+  border-right: 1px solid #fff;
+}
+
+.scoreboard .human,
+.scoreboard .computer {
+  display: flex;
+  flex-direction: column;
+  flex: 100;
+  width: 140px;
+  text-align: center;
+  border: 2px solid #fff;
+  padding: 10px;
+  gap: 10px;
+}
+
+.scoreboard p {
+  font-size: 40px;
+}
+
+.game {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.comp-board,
+.human-board {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  gap: 50px;
+}
+
+.comp-board img {
+  width: 150px;
+  height: auto;
+  border-radius: 50%;
+}
+
+.game p {
+  background-color: yellowgreen;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.human-board button {
+  width: 150px;
+  height: 150px;
+}
+
+.human-board .rock,
+.human-board .paper,
+.human-board .scissors {
+  background-size: cover;
+  border-radius: 50%;
+  border: 0px;
+  transform: rotate(180deg);
+}
+
+.human-board .rock {
+  background-image: url(images/rock.png);
+}
+
+.human-board .paper {
+  background-image: url(images/paper.png);
+}
+
+.human-board .scissors {
+  background-image: url(images/scissors.png);
+}
+
+.human-board button:hover {
+  cursor: pointer;
+  border: 6px solid hsl(120, 100%, 30%);
+}
