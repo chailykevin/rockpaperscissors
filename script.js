@@ -44,14 +44,14 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-function game() {
-  let wins = 0;
-  for (let i = 0; i <= 4; i++) {
-    let temp = playRound(getPlayerChoice(), getComputerChoice());
-    console.log(temp);
-    if (temp.includes("Win")) {
-      wins++;
-    }
-  }
-  console.log(`Congrats! You win ${wins} times!`);
-}
+// function game() {
+//   let wins = 0;
+//   for (let i = 0; i <= 4; i++) {
+//     let temp = playRound(getPlayerChoice(), getComputerChoice());
+//     console.log(temp);
+//     if (temp.includes("Win")) {
+//       wins++;
+//     }
+//   }
+//   console.log(`Congrats! You win ${wins} times!`);
+// }
