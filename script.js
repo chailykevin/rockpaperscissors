@@ -22,6 +22,7 @@ function getComputerChoice() {
 
 function setBorderComputer(choice) {
   const compChoice = document.getElementById(choice);
+  compChoice.style.transition = "border 0.3s";
   compChoice.style.border = "6px solid red";
   setTimeout(() => {
     clearSelected(compChoice);
@@ -70,6 +71,7 @@ function playRound(playerSelection, computerSelection, text) {
 
 function setScore(winner) {
   const winnerName = document.querySelector(`.${winner}`);
+  let gameOver = "";
   switch (winnerName) {
     case null:
       break;
@@ -81,22 +83,35 @@ function setScore(winner) {
       switch (winnerClass) {
         case "human":
           winnerName.childNodes[3].textContent = winnerPoint + 1;
+          if (winnerPoint === 4) {
+            alert("Congrats! You WIN!");
+            gameOver = "OVER";
+          }
           break;
         case "computer":
           winnerName.childNodes[3].textContent = winnerPoint + 1;
+          if (winnerPoint === 4) {
+            alert("Nice Try! You LOSE!");
+            gameOver = "OVER";
+          }
           break;
         default:
           break;
       }
-      if (winnerPoint === 4) {
-        alert("Congrats!");
-      }
       break;
+  }
+  if (gameOver === "OVER") {
+    const again = confirm("Do you want to play again?");
+    if (again === true) {
+      location.reload();
+    } else {
+      alert("Thank you for playing!");
+    }
   }
 }
 
 function clearSelected(button) {
-  button.style.border = "0px";
+  button.style.border = "";
 }
 // function game() {
 //   let wins = 0;
@@ -114,30 +129,69 @@ const humanBoard = document.querySelector(".human-board");
 
 humanBoard.addEventListener("click", (e) => {
   const button = e.target;
+  humanBoard.childNodes[1].disabled = true;
+  humanBoard.childNodes[3].disabled = true;
+  humanBoard.childNodes[5].disabled = true;
 
   const text = document.querySelector(".text");
   const buttonClass = button.classList.value;
+
   switch (buttonClass) {
     case "rock":
-      button.style.border = "6px solid hsl(120, 100%, 30%)";
+      button.classList.add("active");
       setScore(playRound(buttonClass, getComputerChoice(), text));
       setTimeout(() => {
         clearSelected(button);
+        enableButton();
+        button.classList.remove("active");
       }, 2000);
       break;
     case "paper":
-      button.style.border = "6px solid hsl(120, 100%, 30%)";
+      button.classList.add("active");
       setScore(playRound(buttonClass, getComputerChoice(), text));
       setTimeout(() => {
         clearSelected(button);
+        enableButton();
+        button.classList.remove("active");
       }, 2000);
       break;
     case "scissors":
-      button.style.border = "6px solid hsl(120, 100%, 30%)";
+      button.classList.add("active");
       setScore(playRound(buttonClass, getComputerChoice(), text));
       setTimeout(() => {
         clearSelected(button);
+        enableButton();
+        button.classList.remove("active");
       }, 2000);
       break;
   }
 });
+
+// const buttons = document.querySelectorAll("button");
+
+// buttons.forEach((button) => {
+//   button.addEventListener("mouseenter", () => {
+//     button.style.cursor = "pointer";
+//     button.style.border = "6px solid hsl(120, 100%, 30%)";
+//   });
+//   button.addEventListener("mouseleave", () => {
+//     button.style.border = "0px";
+//   });
+// });
+
+window.addEventListener("load", () => {
+  alert("Welcome to Rock, Paper, and Scissors Game!");
+  alert("First to 5 points, WINS!");
+});
+
+function disableButton() {
+  humanBoard.childNodes[1].disabled = true;
+  humanBoard.childNodes[3].disabled = true;
+  humanBoard.childNodes[5].disabled = true;
+}
+
+function enableButton() {
+  humanBoard.childNodes[1].disabled = false;
+  humanBoard.childNodes[3].disabled = false;
+  humanBoard.childNodes[5].disabled = false;
+}

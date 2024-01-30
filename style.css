@@ -80,6 +80,8 @@ h1 {
 .human-board button {
   width: 150px;
   height: 150px;
+  cursor: pointer;
+  transition: border 0.3s;
 }
 
 .human-board .rock,
@@ -104,6 +106,9 @@ h1 {
 }
 
 .human-board button:hover {
-  cursor: pointer;
+  border: 6px solid hsl(120, 100%, 30%) !important;
+}
+
+.human-board button.active {
   border: 6px solid hsl(120, 100%, 30%);
 }
